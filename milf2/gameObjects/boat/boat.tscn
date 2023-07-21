@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b207i6sreq4rr"]
+
+[ext_resource type="Texture2D" uid="uid://cnydog8s8rud0" path="res://art/character/boat.png" id="1_gvuvk"]
+[ext_resource type="Script" path="res://gameObjects/boat/boat.gd" id="1_srcff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxor7"]
+size = Vector2(98, 13)
+
+[node name="boatBody" type="CharacterBody2D"]
+script = ExtResource("1_srcff")
+
+[node name="boatSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_gvuvk")
+
+[node name="boatBox" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 4.5)
+shape = SubResource("RectangleShape2D_hxor7")

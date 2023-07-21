@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://w5sa38r8br18"]
+
+[ext_resource type="Texture2D" uid="uid://i6yuphu5opk1" path="res://art/character/characterBuilt.png" id="1_3jc7l"]
+[ext_resource type="Script" path="res://gameObjects/player/player.gd" id="1_8ywyc"]
+[ext_resource type="Texture2D" uid="uid://c6jsmjfewmv70" path="res://art/misc/breamBuster.png" id="2_em5sa"]
+[ext_resource type="Script" path="res://gameObjects/player/fishinPole.gd" id="3_6trav"]
+[ext_resource type="Script" path="res://gameObjects/player/vectorCreator.gd" id="4_ast0p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4q6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3jc7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i31j3"]
+radius = 38.3275
+
+[node name="player" type="Node2D"]
+script = ExtResource("1_8ywyc")
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="playerSprite" type="AnimatedSprite2D" parent="body"]
+sprite_frames = SubResource("SpriteFrames_v4q6w")
+
+[node name="fishinPole" type="Node2D" parent="."]
+script = ExtResource("3_6trav")
+
+[node name="poleSprite" type="Sprite2D" parent="fishinPole"]
+position = Vector2(24, -4)
+scale = Vector2(0.565574, 0.565574)
+texture = ExtResource("2_em5sa")
+
+[node name="castPoint" type="Node2D" parent="fishinPole"]
+position = Vector2(38, -20)
+
+[node name="vectorCreator" type="Area2D" parent="."]
+script = ExtResource("4_ast0p")
+
+[node name="vectorBox" type="CollisionShape2D" parent="vectorCreator"]
+z_as_relative = false
+shape = SubResource("CircleShape2D_i31j3")
+
+[node name="Node" type="Node" parent="."]
+
+[connection signal="vectorCreated" from="vectorCreator" to="fishinPole" method="_on_vector_creator_vector_created"]

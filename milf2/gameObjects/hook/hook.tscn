@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://gs5gripsh21q"]
+
+[ext_resource type="Texture2D" uid="uid://rdnec4n8uyfs" path="res://art/misc/fish hook.png" id="1_hoq8d"]
+[ext_resource type="Script" path="res://gameObjects/hook/hookBody.gd" id="2_od3vk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a707h"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o06js"]
+radius = 12.0
+
+[node name="hookBody" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("2_od3vk")
+
+[node name="hookSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+texture = ExtResource("1_hoq8d")
+
+[node name="hookBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a707h")
+
+[node name="biteBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="biteBox"]
+shape = SubResource("CircleShape2D_o06js")
+
+[node name="fishHolder" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="biteBox" to="." method="_on_bite_box_body_entered"]
