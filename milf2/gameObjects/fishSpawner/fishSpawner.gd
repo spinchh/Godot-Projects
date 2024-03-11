@@ -21,12 +21,13 @@ var initialPos = Vector2.ZERO
 var fishPos = Vector2.ZERO
 #minimum/maximum fishID that can be spawned
 @export var minFishID = 0
-@export var maxFishID = 1
-#type of fish to be spawned. Randomly determined, bound by min/max FishID
-var type = rng.randi_range(minFishID, maxFishID)
+@export var maxFishID = 2
+
 
 func _ready():
 	controller = get_parent()
+	initialPos = $CollisionShape2D.global_position
+	maxSize = ($CollisionShape2D.shape.get_size())/2
 	add_to_group("fishSpawners")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,10 +38,8 @@ func _process(delta):
 		levelData = controller.level
 	if canSpawnFish:
 		spawnFish()
-		#print(levelData)
-		pass
 	elif !canSpawnFish:
-		print("cantSpawnFish")
+		pass
 
 #sets canSpawnFish based on signal received from FishSpawnController
 func set_canSpawnFish():
@@ -52,18 +51,21 @@ func readyToLoad():
 
 #spawns a random fish, somewhere within the bounds of the fishSpawner
 func spawnFish():
-	var f = FISH.instantiate()
-	var fData = levelData.fishTable[type]
+	#type of fish to be spawned. Randomly determined, bound by min/max FishID
+	var type = rng.randi_range(minFishID, maxFishID)
 	
-	#f.fishName = fData.name
-	f.value = fData.value
-	f.swimSpeed = fData.swimSpeed
-	f.spritePath = fData.spritePath
+	var f = FISH.instantiate()	
+	var fData = "fish" + str(type)
+	
+	f.fishName = levelData.get(fData).name
+	f.value = levelData.get(fData).value
+	f.swimSpeed = levelData.get(fData).swimSpeed
+	f.spritePath = levelData.get(fData).spritePath
 	
 	fishPos.x = float(initialPos.x + rng.randf_range(maxSize.x, -maxSize.x))
 	fishPos.y = float(initialPos.y + rng.randf_range(maxSize.y, -maxSize.y))
-	f.global_position.x = fishPos.x
-	f.global_position.y = fishPos.y
+	f.position.x = fishPos.x
+	f.position.y = fishPos.y
 	
 	controller.add_child(f)
-	controller.addFishToCount
+	controller.addFishToCount()

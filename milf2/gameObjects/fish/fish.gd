@@ -12,7 +12,9 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	pass
+	if spritePath:
+		var texture = load(spritePath)
+		$Sprite2D.set_texture(texture)
 
 func gotHooked(hook):
 	#$Timer.stop()

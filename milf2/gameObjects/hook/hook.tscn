@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://gs5gripsh21q"]
+[gd_scene load_steps=6 format=3 uid="uid://gs5gripsh21q"]
 
 [ext_resource type="Texture2D" uid="uid://rdnec4n8uyfs" path="res://art/misc/fish hook.png" id="1_hoq8d"]
 [ext_resource type="Script" path="res://gameObjects/hook/hookBody.gd" id="2_od3vk"]
@@ -8,6 +8,9 @@ radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o06js"]
 radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hho2b"]
+radius = 5.0
 
 [node name="hookBody" type="RigidBody2D"]
 collision_layer = 2
@@ -30,4 +33,12 @@ shape = SubResource("CircleShape2D_o06js")
 
 [node name="fishHolder" type="Node2D" parent="."]
 
+[node name="waterDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="waterDetector"]
+shape = SubResource("CircleShape2D_hho2b")
+
 [connection signal="body_entered" from="biteBox" to="." method="_on_bite_box_body_entered"]
+[connection signal="area_entered" from="waterDetector" to="." method="_on_water_detector_area_entered"]

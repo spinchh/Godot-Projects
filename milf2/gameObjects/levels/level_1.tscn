@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddtxymf585p2k"]
+[gd_scene load_steps=14 format=3 uid="uid://ddtxymf585p2k"]
 
 [ext_resource type="Texture2D" uid="uid://dqrs34khmk77a" path="res://art/tilesets/art/png/water.png" id="1_tr05a"]
 [ext_resource type="Resource" uid="uid://dwvsvxs3s23op" path="res://resources/fishData/fishData_level1.tres" id="2_61nvo"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b207i6sreq4rr" path="res://gameObjects/boat/boat.tscn" id="3_sjakp"]
 [ext_resource type="PackedScene" uid="uid://b8qupi3cu1rkw" path="res://gameObjects/fish/fish.tscn" id="5_gfcgu"]
 [ext_resource type="Script" path="res://gameObjects/fishSpawner/fishSpawnerController.gd" id="6_7ngc7"]
-[ext_resource type="PackedScene" uid="uid://cy4du44mkak5b" path="res://gameObjects/fishSpawner/fishSpawner.tscn" id="7_nljm3"]
+[ext_resource type="Script" path="res://gameObjects/fishSpawner/fishSpawner.gd" id="8_nd1x5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcwwi"]
 texture = ExtResource("1_tr05a")
@@ -52,7 +52,10 @@ sources/0 = SubResource("TileSetAtlasSource_pcwwi")
 sources/1 = SubResource("TileSetAtlasSource_kgjjd")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yjfn"]
-size = Vector2(640, 62)
+size = Vector2(1532, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgu74"]
+size = Vector2(901.875, 565.375)
 
 [node name="level1" type="Node2D"]
 
@@ -69,9 +72,11 @@ format = 2
 layer_0/tile_data = PackedInt32Array(65520, 0, 0, 131056, 0, 1, 196592, 0, 2, 262128, 0, 3, 65521, 65536, 0, 131057, 65536, 1, 196593, 65536, 2, 262129, 65536, 3, 65522, 131072, 0, 131058, 131072, 1, 196594, 131072, 2, 262130, 131072, 3, 65523, 196608, 0, 131059, 196608, 1, 196595, 196608, 2, 262131, 196608, 3, 65524, 0, 0, 131060, 0, 1, 196596, 0, 2, 262132, 0, 3, 65525, 65536, 0, 131061, 65536, 1, 196597, 65536, 2, 262133, 65536, 3, 65526, 131072, 0, 131062, 131072, 1, 196598, 131072, 2, 262134, 131072, 3, 65527, 196608, 0, 131063, 196608, 1, 196599, 196608, 2, 262135, 196608, 3, 65528, 0, 0, 131064, 0, 1, 196600, 0, 2, 262136, 0, 3, 65529, 65536, 0, 131065, 65536, 1, 196601, 65536, 2, 262137, 65536, 3, 65530, 131072, 0, 131066, 131072, 1, 196602, 131072, 2, 262138, 131072, 3, 65531, 196608, 0, 131067, 196608, 1, 196603, 196608, 2, 262139, 196608, 3, 65532, 0, 0, 131068, 0, 1, 196604, 0, 2, 262140, 0, 3, 65533, 65536, 0, 131069, 65536, 1, 196605, 65536, 2, 262141, 65536, 3, 65534, 131072, 0, 131070, 131072, 1, 196606, 131072, 2, 262142, 131072, 3, 65535, 196608, 0, 131071, 196608, 1, 196607, 196608, 2, 262143, 196608, 3, 0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608, 0, 3, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2, 196609, 65536, 3, 2, 131072, 0, 65538, 131072, 1, 131074, 131072, 2, 196610, 131072, 3, 3, 196608, 0, 65539, 196608, 1, 131075, 196608, 2, 196611, 196608, 3, 4, 0, 0, 65540, 0, 1, 131076, 0, 2, 196612, 0, 3, 5, 65536, 0, 65541, 65536, 1, 131077, 65536, 2, 196613, 65536, 3, 6, 131072, 0, 65542, 131072, 1, 131078, 131072, 2, 196614, 131072, 3, 7, 196608, 0, 65543, 196608, 1, 131079, 196608, 2, 196615, 196608, 3, 8, 0, 0, 65544, 0, 1, 131080, 0, 2, 196616, 0, 3, 9, 65536, 0, 65545, 65536, 1, 131081, 65536, 2, 196617, 65536, 3, 10, 131072, 0, 65546, 131072, 1, 131082, 131072, 2, 196618, 131072, 3, 11, 196608, 0, 65547, 196608, 1, 131083, 196608, 2, 196619, 196608, 3, 12, 0, 0, 65548, 0, 1, 131084, 0, 2, 196620, 0, 3, 13, 65536, 0, 65549, 65536, 1, 131085, 65536, 2, 196621, 65536, 3, 14, 131072, 0, 65550, 131072, 1, 131086, 131072, 2, 196622, 131072, 3, 15, 196608, 0, 65551, 196608, 1, 131087, 196608, 2, 196623, 196608, 3, 16, 0, 0, 65552, 0, 1, 131088, 0, 2, 196624, 0, 3, 17, 65536, 0, 65553, 65536, 1, 131089, 65536, 2, 196625, 65536, 3, 18, 131072, 0, 65554, 131072, 1, 131090, 131072, 2, 196626, 131072, 3, 19, 196608, 0, 65555, 196608, 1, 131091, 196608, 2, 196627, 196608, 3, 65516, 0, 0, 131052, 0, 1, 196588, 0, 2, 262124, 0, 3, 65517, 65536, 0, 131053, 65536, 1, 196589, 65536, 2, 262125, 65536, 3, 65518, 131072, 0, 131054, 131072, 1, 196590, 131072, 2, 262126, 131072, 3, 65519, 196608, 0, 131055, 196608, 1, 196591, 196608, 2, 262127, 196608, 3, 20, 1, 0, 65556, 1, 1, 131092, 1, 2, 196628, 1, 3, 21, 65537, 0, 65557, 65537, 1, 131093, 65537, 2, 196629, 65537, 3, 22, 131073, 0, 65558, 131073, 1, 131094, 131073, 2, 196630, 131073, 3, 23, 196609, 0, 65559, 196609, 1, 131095, 196609, 2, 196631, 196609, 3, 65512, 1, 0, 131048, 1, 1, 196584, 1, 2, 262120, 1, 3, 65513, 65537, 0, 131049, 65537, 1, 196585, 65537, 2, 262121, 65537, 3, 65514, 131073, 0, 131050, 131073, 1, 196586, 131073, 2, 262122, 131073, 3, 65515, 196609, 0, 131051, 196609, 1, 196587, 196609, 2, 262123, 196609, 3)
 
 [node name="water" type="Area2D" parent="TileMap"]
+collision_layer = 32
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/water"]
-position = Vector2(0, 32)
+position = Vector2(4, 33)
 shape = SubResource("RectangleShape2D_2yjfn")
 
 [node name="boat" parent="." instance=ExtResource("3_sjakp")]
@@ -90,12 +95,11 @@ position = Vector2(74, 79)
 [node name="fishSpawnerController" type="Node" parent="."]
 script = ExtResource("6_7ngc7")
 
-[node name="fishSpawner" parent="fishSpawnerController" instance=ExtResource("7_nljm3")]
-position = Vector2(-1, 151)
-minFishID = 0
+[node name="fishSpawner" type="Area2D" parent="fishSpawnerController"]
+position = Vector2(1, 14)
+script = ExtResource("8_nd1x5")
 maxFishID = 1
 
-[node name="fishSpawner3" parent="fishSpawnerController" instance=ExtResource("7_nljm3")]
-position = Vector2(-150, 151)
-minFishID = 0
-maxFishID = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fishSpawnerController/fishSpawner"]
+position = Vector2(-27, 409)
+shape = SubResource("RectangleShape2D_bgu74")

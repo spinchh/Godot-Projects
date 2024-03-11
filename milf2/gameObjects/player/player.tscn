@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://w5sa38r8br18"]
+[gd_scene load_steps=9 format=3 uid="uid://w5sa38r8br18"]
 
 [ext_resource type="Texture2D" uid="uid://i6yuphu5opk1" path="res://art/character/characterBuilt.png" id="1_3jc7l"]
 [ext_resource type="Script" path="res://gameObjects/player/player.gd" id="1_8ywyc"]
@@ -19,6 +19,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i31j3"]
 radius = 38.3275
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmfj4"]
+size = Vector2(106, 26)
 
 [node name="player" type="Node2D"]
 script = ExtResource("1_8ywyc")
@@ -46,6 +49,15 @@ script = ExtResource("4_ast0p")
 z_as_relative = false
 shape = SubResource("CircleShape2D_i31j3")
 
-[node name="Node" type="Node" parent="."]
+[node name="claimArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="claimArea"]
+position = Vector2(0, 19)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_bmfj4")
+one_way_collision_margin = 5.6
 
 [connection signal="vectorCreated" from="vectorCreator" to="fishinPole" method="_on_vector_creator_vector_created"]
+[connection signal="body_entered" from="claimArea" to="." method="_on_claim_area_body_entered"]
