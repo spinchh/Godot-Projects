@@ -6,6 +6,7 @@ enum STATES{CAST, REEL}
 
 var isUnderWater = false
 var forceMultiplier = 3.0
+var totalValue = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,18 +27,14 @@ func launchHook(force):
 	apply_impulse(force * forceMultiplier, Vector2.ZERO)
 
 func claimFish():
+	for fish in $fishHolder.get_children():
+		totalValue += fish.value
 	emit_signal("fishClaimed")
-	print('fish claimed')
 	queue_free()
 
-func caughtFish():
-	#fishCaught += 1
-	pass
 
 func _on_bite_box_body_entered(body):
 	body.gotHooked(self)
-	#body.set_collision_layer_bit(1, false)
-	caughtFish()
 
 func _on_water_detector_area_entered(area):
 	isUnderWater = !isUnderWater

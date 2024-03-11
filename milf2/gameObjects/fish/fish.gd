@@ -4,9 +4,11 @@ enum STATES {FREE, HOOKED}
 
 #variables to be assigned by spawner 
 var fishName: String = ""
-var value = null
+var value = 1
 var swimSpeed = null
 var spritePath = null
+
+var alreadyHooked = false
 
 func _ready():
 	pass
@@ -17,8 +19,7 @@ func _physics_process(delta):
 		$Sprite2D.set_texture(texture)
 
 func gotHooked(hook):
-	#$Timer.stop()
-	#state = STATES.HOOKED
+	set_collision_layer_value(5, false)
 	await get_tree().process_frame
 	get_parent().remove_child(self)
 	hook.get_node("fishHolder").add_child(self)

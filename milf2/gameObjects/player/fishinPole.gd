@@ -14,7 +14,7 @@ var tempLineLength = 0
 #determines current distance from initial position
 var castLength = Vector2()
 #determines speed at which the hook is reeled back in
-var reelSpeed = 2
+var reelSpeed = 5
 var reelStrength = 15
 
 var forceMultiplier = 3.0

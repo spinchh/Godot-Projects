@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddtxymf585p2k"]
+[gd_scene load_steps=15 format=3 uid="uid://ddtxymf585p2k"]
 
 [ext_resource type="Texture2D" uid="uid://dqrs34khmk77a" path="res://art/tilesets/art/png/water.png" id="1_tr05a"]
 [ext_resource type="Resource" uid="uid://dwvsvxs3s23op" path="res://resources/fishData/fishData_level1.tres" id="2_61nvo"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8qupi3cu1rkw" path="res://gameObjects/fish/fish.tscn" id="5_gfcgu"]
 [ext_resource type="Script" path="res://gameObjects/fishSpawner/fishSpawnerController.gd" id="6_7ngc7"]
 [ext_resource type="Script" path="res://gameObjects/fishSpawner/fishSpawner.gd" id="8_nd1x5"]
+[ext_resource type="Texture2D" uid="uid://lfjd7bpdcxpt" path="res://art/newFish/ionfuckinknowdude/ionfuckinknowdude1.png" id="9_a1i2p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcwwi"]
 texture = ExtResource("1_tr05a")
@@ -76,7 +77,7 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/water"]
-position = Vector2(4, 33)
+position = Vector2(1, 17)
 shape = SubResource("RectangleShape2D_2yjfn")
 
 [node name="boat" parent="." instance=ExtResource("3_sjakp")]
@@ -89,9 +90,6 @@ position = Vector2(3, -20)
 z_index = -1
 position = Vector2(3, -20)
 
-[node name="fish" parent="." instance=ExtResource("5_gfcgu")]
-position = Vector2(74, 79)
-
 [node name="fishSpawnerController" type="Node" parent="."]
 script = ExtResource("6_7ngc7")
 
@@ -103,3 +101,10 @@ maxFishID = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fishSpawnerController/fishSpawner"]
 position = Vector2(-27, 409)
 shape = SubResource("RectangleShape2D_bgu74")
+
+[node name="fish2" parent="." instance=ExtResource("5_gfcgu")]
+position = Vector2(101, -58)
+
+[node name="Ionfuckinknowdude1" type="Sprite2D" parent="."]
+position = Vector2(-215, -195)
+texture = ExtResource("9_a1i2p")

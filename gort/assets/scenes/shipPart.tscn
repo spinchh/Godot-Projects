@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/art/items/shipPart6.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/items/shipPart4.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/items/shipPart3.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/items/shipPart1.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/items/shipPart5.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/items/shipPart2.png" type="Texture" id=6]
+[ext_resource path="res://assets/scenes/shipPart.gd" type="Script" id=7]
+[ext_resource path="res://assets/audio/bfxr_sounds/Pickup_Coin.wav" type="AudioStream" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 0, -4 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 17.0
+
+[node name="shipPart" type="Area2D"]
+scale = Vector2( 2, 2 )
+collision_layer = 0
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "0"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
+anims/RESET = SubResource( 3 )
+anims/default = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="soundCollected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+pitch_scale = 0.5
+
+[connection signal="body_entered" from="." to="." method="_on_shipPart_body_entered"]

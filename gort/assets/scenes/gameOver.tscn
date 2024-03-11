@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://gameOver.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.223529, 0.215686, 0.215686, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.843137, 0.831373, 0.831373, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="DynamicFont" id=3]
+size = 37
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.223529, 0.215686, 0.215686, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.843137, 0.831373, 0.831373, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="gameOver" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Popup" type="Popup" parent="."]
+margin_right = 1920.0
+margin_bottom = 1088.0
+
+[node name="Label" type="Label" parent="Popup"]
+margin_top = 192.0
+margin_right = 1920.0
+margin_bottom = 432.0
+custom_colors/font_color = Color( 0.678431, 0.129412, 0.129412, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "R. I. P"
+align = 1
+
+[node name="Button" type="Button" parent="Popup"]
+margin_left = 736.0
+margin_top = 640.0
+margin_right = 1184.0
+margin_bottom = 736.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 2 )
+
+[node name="Label" type="Label" parent="Popup/Button"]
+margin_left = 32.0
+margin_top = 26.0
+margin_right = 416.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Retry from Checkpoint"
+
+[node name="Button2" type="Button" parent="Popup"]
+margin_left = 800.0
+margin_top = 832.0
+margin_right = 1120.0
+margin_bottom = 896.0
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="Label" type="Label" parent="Popup/Button2"]
+margin_left = 33.0
+margin_top = 15.0
+margin_right = 289.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Exit Game"
+align = 1
+
+[connection signal="focus_entered" from="Popup/Button" to="." method="_on_Button_focus_entered"]
+[connection signal="pressed" from="Popup/Button" to="." method="_on_Button_pressed"]
+[connection signal="focus_entered" from="Popup/Button2" to="." method="_on_Button_focus_entered"]
