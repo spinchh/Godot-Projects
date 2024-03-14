@@ -19,6 +19,8 @@ var reelStrength = 15
 
 var forceMultiplier = 3.0
 
+var moneyCounter = null
+
 #state variable preventing multiple lures from being created
 var canCast = true
 #local reference to spawned hook
@@ -36,13 +38,14 @@ func _process(delta):
 			hookChild.reelHook(hookDir, reelStrength)
 		if Input.is_action_pressed("ui_touch"):
 			tempLineLength = tempLineLength - reelSpeed
-	
+
+#Resets working line length to 0
 func resetLineLength():
 	tempLineLength = 0
 
+#spawn and launch hook at vector given by vectorCreator
 func launchHook(force : Vector2):
 	#state = STATES.REEL
-	#vectorCreator.set_collision_layer_bit(3, false)
 	tempLineLength = lineLength
 	var vector = force
 	var initialPosition = $castPoint.global_position
@@ -53,15 +56,20 @@ func launchHook(force : Vector2):
 	#hook.connect("sploosh", self, "sploosh")
 	
 	hook.global_position = initialPosition
-	#self.add_child(hook)
 	get_tree().get_root().add_child(hook)
 	hook.launchHook(force)
 	#$castSound.play()
 
+#prevents multiple lures from being out at once
 func _on_vector_creator_vector_created(force):
 	if canCast:
 		launchHook(force)
 		canCast = false
 
-func claimFish():
+#update money value in Globals
+func claimFish(value):
+	var currentMoney = PlayerData.playerValues["money"]
+	var newMoney = currentMoney + value
+	PlayerData.playerValues["money"] = newMoney
+	get_parent().emit_signal("updateHUD")
 	canCast = true

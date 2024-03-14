@@ -18,18 +18,21 @@ func _physics_process(delta):
 		self.linear_damp = 10
 	else:
 		self.linear_damp = .1
-	
+
+#if at tempLineLength distance, apply vector pointing towards the player
 func reelHook(hookDir, reelStrength):
 	var reelDir = hookDir * reelStrength
 	apply_impulse(reelDir, Vector2.ZERO)
 
+#launch hook at given vector force
 func launchHook(force):
 	apply_impulse(force * forceMultiplier, Vector2.ZERO)
 
+#total up all fish 
 func claimFish():
 	for fish in $fishHolder.get_children():
 		totalValue += fish.value
-	emit_signal("fishClaimed")
+	emit_signal("fishClaimed", totalValue)
 	queue_free()
 
 

@@ -15,6 +15,10 @@ run/main_scene="res://gameObjects/levels/level_1.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+PlayerData="*res://resources/autoLoads/playerData.gd"
+
 [input]
 
 moveLeft={

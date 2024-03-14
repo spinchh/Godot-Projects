@@ -1,14 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddtxymf585p2k"]
+[gd_scene load_steps=17 format=3 uid="uid://ddtxymf585p2k"]
 
 [ext_resource type="Texture2D" uid="uid://dqrs34khmk77a" path="res://art/tilesets/art/png/water.png" id="1_tr05a"]
 [ext_resource type="Resource" uid="uid://dwvsvxs3s23op" path="res://resources/fishData/fishData_level1.tres" id="2_61nvo"]
 [ext_resource type="Texture2D" uid="uid://dsxprnu10nm85" path="res://art/tilesets/art/png/ground.png" id="2_d4mrm"]
 [ext_resource type="PackedScene" uid="uid://w5sa38r8br18" path="res://gameObjects/player/player.tscn" id="2_qhtqv"]
+[ext_resource type="Script" path="res://resources/autoLoads/playerData.gd" id="2_yhgsc"]
 [ext_resource type="PackedScene" uid="uid://b207i6sreq4rr" path="res://gameObjects/boat/boat.tscn" id="3_sjakp"]
 [ext_resource type="PackedScene" uid="uid://b8qupi3cu1rkw" path="res://gameObjects/fish/fish.tscn" id="5_gfcgu"]
 [ext_resource type="Script" path="res://gameObjects/fishSpawner/fishSpawnerController.gd" id="6_7ngc7"]
 [ext_resource type="Script" path="res://gameObjects/fishSpawner/fishSpawner.gd" id="8_nd1x5"]
 [ext_resource type="Texture2D" uid="uid://lfjd7bpdcxpt" path="res://art/newFish/ionfuckinknowdude/ionfuckinknowdude1.png" id="9_a1i2p"]
+[ext_resource type="Script" path="res://gameObjects/HUD/HUD.gd" id="11_xa5uj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcwwi"]
 texture = ExtResource("1_tr05a")
@@ -65,7 +67,8 @@ resources = [PackedStringArray("fishData_level1"), [ExtResource("2_61nvo")]]
 
 [node name="globals" type="Node" parent="."]
 
-[node name="fishDataManager" type="Node" parent="globals"]
+[node name="playerDataManager" type="Node" parent="globals"]
+script = ExtResource("2_yhgsc")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vx50w")
@@ -108,3 +111,19 @@ position = Vector2(101, -58)
 [node name="Ionfuckinknowdude1" type="Sprite2D" parent="."]
 position = Vector2(-215, -195)
 texture = ExtResource("9_a1i2p")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("11_xa5uj")
+
+[node name="dolla bills yall" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="money" type="Label" parent="HUD/dolla bills yall"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="updateHUD" from="boat/player" to="HUD" method="_on_player_update_hud"]

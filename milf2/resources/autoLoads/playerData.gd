@@ -1,6 +1,12 @@
 extends Node
 
-var money = 0
+var defaultValues = {
+	money = 0
+}
+
+var playerValues = {
+	money = 420
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
