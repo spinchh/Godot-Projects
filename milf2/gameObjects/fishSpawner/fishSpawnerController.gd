@@ -4,7 +4,7 @@ enum BIOME {LAKE, OCEAN}
 @export var levelName = "level1"
 
 #maximum fish allowed on screen
-@export var maxFish = 200
+@export var maxFish = 5
 #fish currently spawned in
 var fishSpawned = 0
 #state variable determines if fish can be spawned
@@ -19,15 +19,29 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#can spawn fish if fishSpawned is less than maxFish; otherwise, can't spawn fish
+	print(fishSpawned)
+	
 	if fishSpawned < maxFish and canSpawnFish == true:
-		pass
-	elif fishSpawned < maxFish and canSpawnFish != true:
 		get_tree().call_group("fishSpawners", "set_canSpawnFish")
+	elif fishSpawned < maxFish and canSpawnFish != true:
+		pass
 	elif fishSpawned > maxFish and canSpawnFish == true:
 		get_tree().call_group("fishSpawners", "set_cannotSpawnFish")
 	else:
 		pass
+	#can spawn fish if fishSpawned is less than maxFish; otherwise, can't spawn fish
+#	if fishSpawned < maxFish and canSpawnFish == true:
+#		pass
+#	elif fishSpawned < maxFish and canSpawnFish != true:
+#		get_tree().call_group("fishSpawners", "set_canSpawnFish")
+#	elif fishSpawned > maxFish and canSpawnFish == true:
+#		get_tree().call_group("fishSpawners", "set_cannotSpawnFish")
+#	else:
+#		pass
+
 
 func addFishToCount():
 	fishSpawned += 1
+
+func _on_player_update_fish_spawner(fishCaught):
+	fishSpawned = fishSpawned - fishCaught

@@ -9,15 +9,15 @@ var state = STATES.CAST
 var initialPos = Vector2.ZERO
 #determines maximum distance from initialPos
 #var lineLength = Vector2(300,300)
-var lineLength = 300
+var lineLength = 3000
 var tempLineLength = 0
 #determines current distance from initial position
 var castLength = Vector2()
 #determines speed at which the hook is reeled back in
 var reelSpeed = 5
-var reelStrength = 15
+var reelStrength = 60
 
-var forceMultiplier = 3.0
+var forceMultiplier = 10.0
 
 var moneyCounter = null
 
@@ -37,6 +37,7 @@ func _process(delta):
 		if castLength >= tempLineLength:
 			hookChild.reelHook(hookDir, reelStrength)
 		if Input.is_action_pressed("ui_touch"):
+			tempLineLength = castLength
 			tempLineLength = tempLineLength - reelSpeed
 
 #Resets working line length to 0
@@ -57,7 +58,7 @@ func launchHook(force : Vector2):
 	
 	hook.global_position = initialPosition
 	get_tree().get_root().add_child(hook)
-	hook.launchHook(force)
+	hook.launchHook(force, forceMultiplier)
 	#$castSound.play()
 
 #prevents multiple lures from being out at once
@@ -67,9 +68,10 @@ func _on_vector_creator_vector_created(force):
 		canCast = false
 
 #update money value in Globals
-func claimFish(value):
+func claimFish(value, fishCaught):
 	var currentMoney = PlayerData.playerValues["money"]
 	var newMoney = currentMoney + value
 	PlayerData.playerValues["money"] = newMoney
 	get_parent().emit_signal("updateHUD")
+	get_parent().emit_signal("updateFishSpawner", fishCaught)
 	canCast = true

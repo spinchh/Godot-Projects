@@ -1,6 +1,7 @@
 extends Node2D
 
 signal updateHUD
+signal updateFishSpawner
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,3 +13,6 @@ func _process(delta):
 	
 func _on_claim_area_body_entered(body):
 	body.claimFish()
+
+func _on_shop_button_pressed():
+	get_tree().change_scene_to_file("res://gameObjects/levels/shop.tscn")
