@@ -86,9 +86,6 @@ shape = SubResource("RectangleShape2D_2yjfn")
 [node name="boat" parent="." instance=ExtResource("3_sjakp")]
 position = Vector2(-5, 2)
 
-[node name="Camera2D" type="Camera2D" parent="boat"]
-position = Vector2(3, -20)
-
 [node name="player" parent="boat" instance=ExtResource("2_qhtqv")]
 z_index = -1
 position = Vector2(3, -20)

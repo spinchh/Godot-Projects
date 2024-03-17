@@ -16,15 +16,16 @@ var castLength = Vector2()
 #determines speed at which the hook is reeled back in
 var reelSpeed = 5
 var reelStrength = 60
-
+#determines the strength of the cast, multiplies the force vector in launchHook
 var forceMultiplier = 10.0
-
-var moneyCounter = null
 
 #state variable preventing multiple lures from being created
 var canCast = true
 #local reference to spawned hook
 var hookChild = null
+#reference to camera child
+@onready var cameraChild = $Camera2D
+var hasChangedCamera = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	resetLineLength()
@@ -34,6 +35,11 @@ func _process(delta):
 	if hookChild != null:
 		var hookDir = hookChild.global_position.direction_to(self.global_position)
 		castLength = global_position.distance_to(hookChild.global_position)
+		if castLength > 100 and hasChangedCamera == false:
+			var tween = create_tween()
+			tween.tween_property(cameraChild, 'position', hookChild.position, .75)
+			if !tween.is_running():
+				hookChild.takeCamera()
 		if castLength >= tempLineLength:
 			hookChild.reelHook(hookDir, reelStrength)
 		if Input.is_action_pressed("ui_touch"):
@@ -72,6 +78,15 @@ func claimFish(value, fishCaught):
 	var currentMoney = PlayerData.playerValues["money"]
 	var newMoney = currentMoney + value
 	PlayerData.playerValues["money"] = newMoney
+	
+#	var tween = create_tween()
+#	tween.tween_property(hookChild.position, 'position', hookChild.position, .75)
+	
 	get_parent().emit_signal("updateHUD")
 	get_parent().emit_signal("updateFishSpawner", fishCaught)
+	
 	canCast = true
+
+func cameraTransition():
+	var tween = create_tween()
+	tween.tween_property(cameraChild, 'position', hookChild.position, .75)

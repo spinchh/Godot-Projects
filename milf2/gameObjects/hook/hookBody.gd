@@ -36,6 +36,9 @@ func claimFish():
 	emit_signal("fishClaimed", totalValue, fishCaught)
 	queue_free()
 
+func takeCamera():
+	$hookCamera.make_current()
+
 func _on_bite_box_body_entered(body):
 	body.gotHooked(self)
 
