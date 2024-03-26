@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfo4c0214aix0"]
+[gd_scene load_steps=3 format=3 uid="uid://bfo4c0214aix0"]
 
 [ext_resource type="Script" path="res://gameObjects/levels/shop/shopLayout.gd" id="1_c6i5e"]
+[ext_resource type="PackedScene" uid="uid://btc376twy2m7l" path="res://gameObjects/levels/shop/subMenu.tscn" id="2_pdfih"]
 
 [node name="shop" type="Node2D"]
 
@@ -25,75 +26,75 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="shopLayout/Control"]
 layout_mode = 2
-text = "mother fucking shop ya'll"
+text = "mother fucking shop y'all"
 
 [node name="Label2" type="Label" parent="shopLayout/Control"]
 layout_mode = 2
 size_flags_vertical = 10
 text = "mother fucking item data"
 
-[node name="headerContainer" type="GridContainer" parent="shopLayout"]
+[node name="backButtons" type="MarginContainer" parent="shopLayout"]
 anchors_preset = -1
-anchor_left = -0.465
-anchor_top = -0.441
-anchor_right = 0.468
-anchor_bottom = -0.369
-offset_left = -0.319946
-offset_top = -0.231995
-offset_right = -0.136047
-offset_bottom = 0.112015
-columns = 3
+anchor_left = 0.391
+anchor_top = 0.386
+anchor_right = 0.48
+anchor_bottom = 0.469
+offset_left = -0.432037
+offset_top = -0.128006
+offset_right = 0.039978
+offset_bottom = 0.0879822
 
-[node name="gearButton" type="Button" parent="shopLayout/headerContainer"]
+[node name="backToFishin" type="Button" parent="shopLayout/backButtons"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Gear"
+text = "back to
+fishin'"
 
-[node name="dripButton" type="Button" parent="shopLayout/headerContainer"]
+[node name="TabContainer" type="TabContainer" parent="shopLayout"]
+offset_left = -558.0
+offset_top = -305.0
+offset_right = 246.0
+offset_bottom = 305.0
+
+[node name="Gear" type="TabBar" parent="shopLayout/TabContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Drip
-"
 
-[node name="miscButton" type="Button" parent="shopLayout/headerContainer"]
+[node name="subMenu" parent="shopLayout/TabContainer/Gear" instance=ExtResource("2_pdfih")]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 27.0
+offset_right = -25.0
+offset_bottom = -15.0
+
+[node name="Drip" type="TabBar" parent="shopLayout/TabContainer"]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Misc"
 
-[node name="gearTabContainer" type="GridContainer" parent="shopLayout"]
+[node name="subMenu" parent="shopLayout/TabContainer/Drip" instance=ExtResource("2_pdfih")]
+layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.451
-anchor_top = -0.351
-anchor_right = 0.211
-anchor_bottom = -0.262
-offset_left = -0.447937
-offset_top = 4.44801
-offset_right = 0.927994
-offset_bottom = -0.223984
-columns = 4
+anchor_left = 0.437
+anchor_top = 2.386
+anchor_right = 19.491
+anchor_bottom = 14.877
+offset_left = 0.52
+offset_top = -37.44
+offset_right = -1.64001
+offset_bottom = -1.08002
 
-[node name="rodsButton" type="Button" parent="shopLayout/gearTabContainer"]
+[node name="Misc" type="TabBar" parent="shopLayout/TabContainer"]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "rods
-"
 
-[node name="reelsButton" type="Button" parent="shopLayout/gearTabContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "reels"
+[node name="subMenu" parent="shopLayout/TabContainer/Misc" instance=ExtResource("2_pdfih")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.437
+anchor_top = 2.386
+anchor_right = 19.491
+anchor_bottom = 14.877
+offset_left = 0.52
+offset_top = -37.44
+offset_right = -1.64001
+offset_bottom = -1.08002
 
-[node name="luresButton" type="Button" parent="shopLayout/gearTabContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "lures"
-
-[node name="boatsButton" type="Button" parent="shopLayout/gearTabContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "boats and boat 
-accessories"
+[connection signal="pressed" from="shopLayout/backButtons/backToFishin" to="shopLayout" method="_on_back_to_fishin_pressed"]

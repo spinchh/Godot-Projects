@@ -1,0 +1,45 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://chs5vnd087n1q"]
+
+[ext_resource type="Texture2D" uid="uid://bvf0i8rcas7w2" path="res://art/newFish/minnow/minnowSheet.png" id="1_km0ts"]
+[ext_resource type="Texture2D" uid="uid://bvq3t1fhlk5h3" path="res://art/newFish/trout/trout1-Sheet-export.png" id="2_c0ivt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4ci2"]
+atlas = ExtResource("1_km0ts")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpaqf"]
+atlas = ExtResource("1_km0ts")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x6ar"]
+atlas = ExtResource("2_c0ivt")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0kxl"]
+atlas = ExtResource("2_c0ivt")
+region = Rect2(64, 0, 64, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4ci2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpaqf")
+}],
+"loop": true,
+"name": &"Minnow",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x6ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0kxl")
+}],
+"loop": true,
+"name": &"Trout",
+"speed": 2.0
+}]

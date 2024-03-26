@@ -19,8 +19,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(fishSpawned)
-	
 	if fishSpawned < maxFish and canSpawnFish == true:
 		get_tree().call_group("fishSpawners", "set_canSpawnFish")
 	elif fishSpawned < maxFish and canSpawnFish != true:
@@ -29,16 +27,6 @@ func _process(delta):
 		get_tree().call_group("fishSpawners", "set_cannotSpawnFish")
 	else:
 		pass
-	#can spawn fish if fishSpawned is less than maxFish; otherwise, can't spawn fish
-#	if fishSpawned < maxFish and canSpawnFish == true:
-#		pass
-#	elif fishSpawned < maxFish and canSpawnFish != true:
-#		get_tree().call_group("fishSpawners", "set_canSpawnFish")
-#	elif fishSpawned > maxFish and canSpawnFish == true:
-#		get_tree().call_group("fishSpawners", "set_cannotSpawnFish")
-#	else:
-#		pass
-
 
 func addFishToCount():
 	fishSpawned += 1

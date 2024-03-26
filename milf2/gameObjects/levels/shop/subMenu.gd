@@ -1,15 +1,12 @@
-extends CanvasLayer
+extends TabContainer
 
-
+#variables for storing shop data to be pulled in by the sub-menus
+var rodData = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	rodData = load('res://resources/shopItems/rods.tres')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-func _on_back_to_fishin_pressed():
-	get_tree().change_scene_to_file("res://gameObjects/levels/level_1.tscn")

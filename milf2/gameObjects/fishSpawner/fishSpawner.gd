@@ -60,7 +60,8 @@ func spawnFish():
 	f.fishName = levelData.get(fData).name
 	f.value = levelData.get(fData).value
 	f.swimSpeed = levelData.get(fData).swimSpeed
-	f.spritePath = levelData.get(fData).spritePath
+	f.spriteSheet = levelData.get("spriteSheet")
+	#f.spritePath = levelData.get(fData).spritePath
 	
 	fishPos.x = float(initialPos.x + rng.randf_range(maxSize.x, -maxSize.x))
 	fishPos.y = float(initialPos.y + rng.randf_range(maxSize.y, -maxSize.y))

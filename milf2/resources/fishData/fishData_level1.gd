@@ -4,18 +4,19 @@ class_name FishData
 
 #Data dictionary containing values for all the fish in the first biome.
 
+var spriteSheet = "res://resources/fishData/level1FishSprites.tres"
+
 var fish0 = {
 	'name' = "Minnow",
 	'value' = 1,
 	'swimSpeed' = 10,
-	'spritePath' = "res://art/newFish/minnow/minnow1.png"
 }
 
 var fish1 = {
 		'name' = "Trout",
 		'value' = 5,
 		'swimSpeed' = 20,
-		'spritePath' = "res://art/fish/trout1.png"
+		'spritePath' = "res://art/newFish/trout/trout1.png"
 	}
 
 var fish2 = {

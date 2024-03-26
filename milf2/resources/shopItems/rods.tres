@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://70rh80b264qr"]
+
+[ext_resource type="Script" path="res://resources/shopItems/rods.gd" id="1_iu668"]
+
+[resource]
+script = ExtResource("1_iu668")

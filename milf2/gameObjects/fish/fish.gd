@@ -8,15 +8,23 @@ var value = 1
 var swimSpeed = null
 var spritePath = null
 
-var alreadyHooked = false
+var isLoaded = false
+var spriteSheet = null
+var spriteResource = null
+
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	if spritePath:
-		var texture = load(spritePath)
-		$Sprite2D.set_texture(texture)
+	if spriteSheet != null and isLoaded == false:
+		spriteResource = load(spriteSheet)
+		startSprite()
+		isLoaded = true
+
+func startSprite():
+	$AnimatedSprite2D.set_sprite_frames(spriteResource)
+	$AnimatedSprite2D.play(fishName)
 
 func gotHooked(hook):
 	set_collision_layer_value(5, false)

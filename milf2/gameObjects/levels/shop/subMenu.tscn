@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=3 uid="uid://btc376twy2m7l"]
+
+[ext_resource type="Script" path="res://gameObjects/levels/shop/subMenu.gd" id="1_ox6xb"]
+
+[node name="subMenu" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_alignment = 1
+script = ExtResource("1_ox6xb")
+
+[node name="tab1" type="TabBar" parent="."]
+layout_mode = 2
+tab_count = 1
+tab_0/title = ""
+
+[node name="tab1Container" type="ScrollContainer" parent="tab1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.065
+anchor_right = 0.959
+anchor_bottom = 0.938
+offset_left = 22.312
+offset_top = 15.895
+offset_right = -11.7681
+offset_bottom = -8.74603
+
+[node name="GridContainer" type="GridContainer" parent="tab1/tab1Container"]
+layout_mode = 2
+
+[node name="TabBar3" type="TabBar" parent="."]
+visible = false
+layout_mode = 2
+tab_count = 1
+tab_0/title = ""
+
+[node name="tab1Container" type="ScrollContainer" parent="TabBar3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.065
+anchor_right = 0.959
+anchor_bottom = 0.938
+offset_left = 22.312
+offset_top = 15.895
+offset_right = -11.7681
+offset_bottom = -8.74603
+
+[node name="GridContainer" type="GridContainer" parent="TabBar3/tab1Container"]
+layout_mode = 2
+
+[node name="TabBar4" type="TabBar" parent="."]
+visible = false
+layout_mode = 2
+tab_alignment = 1
+tab_count = 1
+tab_0/title = ""
+
+[node name="tab1Container" type="ScrollContainer" parent="TabBar4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.065
+anchor_right = 0.959
+anchor_bottom = 0.938
+offset_left = 22.312
+offset_top = 15.895
+offset_right = -11.7681
+offset_bottom = -8.74603
+
+[node name="GridContainer" type="GridContainer" parent="TabBar4/tab1Container"]
+layout_mode = 2
+
+[node name="TabBar2" type="TabBar" parent="."]
+visible = false
+layout_mode = 2
+tab_count = 1
+tab_0/title = ""
+
+[node name="tab1Container" type="ScrollContainer" parent="TabBar2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.044
+anchor_top = 0.065
+anchor_right = 0.959
+anchor_bottom = 0.938
+offset_left = 22.312
+offset_top = 15.895
+offset_right = -11.7681
+offset_bottom = -8.74603
+
+[node name="GridContainer" type="GridContainer" parent="TabBar2/tab1Container"]
+layout_mode = 2

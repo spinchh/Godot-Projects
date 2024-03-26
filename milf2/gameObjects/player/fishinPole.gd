@@ -32,16 +32,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#only run if a hook is active
 	if hookChild != null:
 		var hookDir = hookChild.global_position.direction_to(self.global_position)
 		castLength = global_position.distance_to(hookChild.global_position)
+		
+		#change camera when hook is a certain distance away
 		if castLength > 100 and hasChangedCamera == false:
 			var tween = create_tween()
 			tween.tween_property(cameraChild, 'position', hookChild.position, .75)
+			
+			#swamp camera once tween is complete
 			if !tween.is_running():
 				hookChild.takeCamera()
+			
+		#apply reel force on hook once it reaches tempLineLength
 		if castLength >= tempLineLength:
 			hookChild.reelHook(hookDir, reelStrength)
+		
+		#reel 'er in
 		if Input.is_action_pressed("ui_touch"):
 			tempLineLength = castLength
 			tempLineLength = tempLineLength - reelSpeed
@@ -52,14 +61,12 @@ func resetLineLength():
 
 #spawn and launch hook at vector given by vectorCreator
 func launchHook(force : Vector2):
-	#state = STATES.REEL
 	tempLineLength = lineLength
 	var vector = force
 	var initialPosition = $castPoint.global_position
 	var hook = FISHHOOK.instantiate()
 	hookChild = hook
 	hook.connect("fishClaimed", claimFish)
-	#hook.connect("reeledIn", self, "addCash")
 	#hook.connect("sploosh", self, "sploosh")
 	
 	hook.global_position = initialPosition
@@ -79,8 +86,9 @@ func claimFish(value, fishCaught):
 	var newMoney = currentMoney + value
 	PlayerData.playerValues["money"] = newMoney
 	
-#	var tween = create_tween()
-#	tween.tween_property(hookChild.position, 'position', hookChild.position, .75)
+	var tween = create_tween()
+	tween.tween_property(cameraChild, 'position', self.position, .75)
+	cameraChild.make_current()
 	
 	get_parent().emit_signal("updateHUD")
 	get_parent().emit_signal("updateFishSpawner", fishCaught)

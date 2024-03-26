@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8qupi3cu1rkw"]
 
 [ext_resource type="Script" path="res://gameObjects/fish/fish.gd" id="1_gmrum"]
-[ext_resource type="Texture2D" uid="uid://cvc804sf6pjqc" path="res://art/newFish/minnow/minnow1.png" id="2_b141m"]
+[ext_resource type="SpriteFrames" uid="uid://chs5vnd087n1q" path="res://resources/fishData/level1FishSprites.tres" id="2_u2mo0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_178lm"]
 radius = 9.0
@@ -12,8 +12,9 @@ collision_layer = 16
 collision_mask = 10
 script = ExtResource("1_gmrum")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_b141m")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_u2mo0")
+animation = &"Trout"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
