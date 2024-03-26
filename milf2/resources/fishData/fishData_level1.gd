@@ -10,27 +10,24 @@ var fish0 = {
 	'name' = "Minnow",
 	'value' = 1,
 	'swimSpeed' = 10,
-}
+	}
 
 var fish1 = {
 		'name' = "Trout",
 		'value' = 5,
 		'swimSpeed' = 20,
-		'spritePath' = "res://art/newFish/trout/trout1.png"
 	}
 
 var fish2 = {
-		'name' = "Trout",
-		'value' = 5,
+		'name' = "Bream",
+		'value' = 3,
 		'swimSpeed' = 20,
-		'spritePath' = "res://art/fish/duck.png"
 	}
 	
 var fish3 = {
 		'name' = "gator",
 		'value' = 5,
 		'swimSpeed' = 20,
-		'spritePath' = "res://art/fish/alligator.png"
 	}
 
 # Called when the node enters the scene tree for the first time.

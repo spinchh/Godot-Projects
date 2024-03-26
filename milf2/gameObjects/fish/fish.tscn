@@ -14,7 +14,8 @@ script = ExtResource("1_gmrum")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_u2mo0")
-animation = &"Trout"
+animation = &"Bream"
+frame_progress = 0.964241
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

@@ -96,7 +96,7 @@ script = ExtResource("6_7ngc7")
 [node name="fishSpawner" type="Area2D" parent="fishSpawnerController"]
 position = Vector2(1, 14)
 script = ExtResource("8_nd1x5")
-maxFishID = 1
+maxFishID = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fishSpawnerController/fishSpawner"]
 position = Vector2(-4, 134.656)
