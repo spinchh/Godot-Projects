@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Fish
+
 enum STATES {FREE, HOOKED}
 
 #variables to be assigned by spawner 

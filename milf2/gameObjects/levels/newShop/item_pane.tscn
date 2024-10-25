@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://cme1shi558ece"]
+
+[ext_resource type="Texture2D" uid="uid://cfqwv5w404k64" path="res://art/newUI/rodsArt/sampleRod.png" id="1_jrqes"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nl3v"]
+bg_color = Color(0.105882, 0.0666667, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bl1bb"]
+bg_color = Color(0.309804, 0.164706, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp8h1"]
+
+[node name="Container" type="BoxContainer"]
+custom_minimum_size = Vector2(220, 220)
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="mainCont" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(220, 220)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nl3v")
+
+[node name="itemArtCont" type="MarginContainer" parent="mainCont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="mainCont/itemArtCont"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_bl1bb")
+
+[node name="TextureRect" type="TextureRect" parent="mainCont/itemArtCont"]
+layout_mode = 2
+texture = ExtResource("1_jrqes")
+
+[node name="labelMarginCont" type="MarginContainer" parent="mainCont"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="labelPanelCont" type="PanelContainer" parent="mainCont/labelMarginCont"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="mainCont/labelMarginCont/labelPanelCont"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jp8h1")
+
+[node name="Label" type="Label" parent="mainCont/labelMarginCont"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "bottom text"
+horizontal_alignment = 1
+vertical_alignment = 1

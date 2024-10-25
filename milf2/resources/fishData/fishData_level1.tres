@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FishData" load_steps=2 format=3 uid="uid://dwvsvxs3s23op"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dwvsvxs3s23op"]
 
 [ext_resource type="Script" path="res://resources/fishData/fishData_level1.gd" id="1_hgaaj"]
 

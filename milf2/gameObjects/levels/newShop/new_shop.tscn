@@ -1,0 +1,208 @@
+[gd_scene load_steps=3 format=3 uid="uid://clbo7kk67t2rg"]
+
+[ext_resource type="Script" path="res://gameObjects/levels/newShop/midContainers.gd" id="1_q4wv5"]
+[ext_resource type="Script" path="res://gameObjects/levels/newShop/shopItemContainer.gd" id="2_6r1o8"]
+
+[node name="newShop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="shopUI" type="CanvasLayer" parent="."]
+
+[node name="topContainer" type="HBoxContainer" parent="shopUI"]
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.028
+anchor_right = 0.657
+anchor_bottom = 0.147
+offset_left = 7.768
+offset_top = 4.856
+offset_right = -7.86401
+offset_bottom = -7.256
+size_flags_horizontal = 3
+
+[node name="gear" type="Button" parent="shopUI/topContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gear	"
+
+[node name="apparel" type="Button" parent="shopUI/topContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "apparel	"
+
+[node name="boat stuff" type="Button" parent="shopUI/topContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "boat stuff"
+
+[node name="misc" type="Button" parent="shopUI/topContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "misc"
+
+[node name="midContainers" type="Control" parent="shopUI"]
+layout_mode = 3
+anchor_left = 0.077
+anchor_top = 0.127
+anchor_right = 0.663
+anchor_bottom = 0.233
+offset_left = -47.704
+offset_top = -0.296005
+offset_right = 343.224
+offset_bottom = 0.0159912
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q4wv5")
+
+[node name="gearContainer" type="HBoxContainer" parent="shopUI/midContainers"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 0.028
+anchor_right = 0.639
+anchor_bottom = 0.158
+offset_left = 14.03
+offset_top = 11.068
+offset_right = -16.174
+offset_bottom = 37.098
+size_flags_horizontal = 3
+
+[node name="gear" type="Button" parent="shopUI/midContainers/gearContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Rods"
+
+[node name="apparel" type="Button" parent="shopUI/midContainers/gearContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reels"
+
+[node name="boat stuff" type="Button" parent="shopUI/midContainers/gearContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lures"
+
+[node name="misc" type="Button" parent="shopUI/midContainers/gearContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Misc
+"
+
+[node name="apparelContainer" type="HBoxContainer" parent="shopUI/midContainers"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.183
+anchor_right = 0.62
+anchor_bottom = 0.7
+offset_left = 0.0769958
+offset_top = 0.0200033
+offset_right = 0.390015
+size_flags_horizontal = 3
+
+[node name="gear" type="Button" parent="shopUI/midContainers/apparelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hats"
+
+[node name="apparel" type="Button" parent="shopUI/midContainers/apparelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shirts"
+
+[node name="boat stuff" type="Button" parent="shopUI/midContainers/apparelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pants"
+
+[node name="misc" type="Button" parent="shopUI/midContainers/apparelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shoes"
+
+[node name="boatContainer" type="HBoxContainer" parent="shopUI/midContainers"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.183
+anchor_right = 0.62
+anchor_bottom = 0.7
+offset_left = 0.0769958
+offset_top = 0.0200033
+offset_right = 0.390015
+size_flags_horizontal = 3
+
+[node name="boats" type="Button" parent="shopUI/midContainers/boatContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Boats"
+
+[node name="motors" type="Button" parent="shopUI/midContainers/boatContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Motors"
+
+[node name="misc" type="Button" parent="shopUI/midContainers/boatContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Misc"
+
+[node name="miscContainer" type="HBoxContainer" parent="shopUI/midContainers"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.183
+anchor_right = 0.62
+anchor_bottom = 0.7
+offset_left = 0.0769958
+offset_top = 0.0200033
+offset_right = 0.390015
+size_flags_horizontal = 3
+
+[node name="new levels" type="Button" parent="shopUI/midContainers/miscContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Levels"
+
+[node name="homies" type="Button" parent="shopUI/midContainers/miscContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Homies"
+
+[node name="accessories" type="Button" parent="shopUI/midContainers/miscContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Accessories"
+
+[node name="other" type="Button" parent="shopUI/midContainers/miscContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Other
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="shopUI"]
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.198
+anchor_right = 0.651
+anchor_bottom = 0.972
+offset_left = -1.864
+offset_top = 6.696
+offset_right = 0.0479736
+offset_bottom = 0.143982
+
+[node name="shopItemContainer" type="GridContainer" parent="shopUI/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+script = ExtResource("2_6r1o8")
+
+[connection signal="pressed" from="shopUI/topContainer/gear" to="shopUI/midContainers" method="_on_gear_pressed"]
+[connection signal="pressed" from="shopUI/topContainer/apparel" to="shopUI/midContainers" method="_on_apparel_pressed"]
+[connection signal="pressed" from="shopUI/topContainer/boat stuff" to="shopUI/midContainers" method="_on_boat_stuff_pressed"]
+[connection signal="pressed" from="shopUI/topContainer/misc" to="shopUI/midContainers" method="_on_misc_pressed"]

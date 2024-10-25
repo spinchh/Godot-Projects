@@ -1,6 +1,5 @@
 extends Resource
 
-class_name FishData
 
 #Data dictionary containing values for all the fish in the first biome.
 
