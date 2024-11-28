@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cme1shi558ece"]
+[gd_scene load_steps=7 format=3 uid="uid://cme1shi558ece"]
 
 [ext_resource type="Texture2D" uid="uid://cfqwv5w404k64" path="res://art/newUI/rodsArt/sampleRod.png" id="1_jrqes"]
+[ext_resource type="Script" path="res://gameObjects/levels/newShop/item_pane.gd" id="1_t7o1f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nl3v"]
 bg_color = Color(0.105882, 0.0666667, 0, 1)
@@ -10,11 +11,14 @@ bg_color = Color(0.309804, 0.164706, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp8h1"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyu8n"]
+
 [node name="Container" type="BoxContainer"]
 custom_minimum_size = Vector2(220, 220)
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
+script = ExtResource("1_t7o1f")
 
 [node name="mainCont" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(220, 220)
@@ -40,6 +44,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bl1bb")
 [node name="TextureRect" type="TextureRect" parent="mainCont/itemArtCont"]
 layout_mode = 2
 texture = ExtResource("1_jrqes")
+expand_mode = 1
 
 [node name="labelMarginCont" type="MarginContainer" parent="mainCont"]
 layout_mode = 2
@@ -64,3 +69,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "bottom text"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="mainCont"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jyu8n")
+
+[connection signal="pressed" from="mainCont/Button" to="." method="_on_button_pressed"]

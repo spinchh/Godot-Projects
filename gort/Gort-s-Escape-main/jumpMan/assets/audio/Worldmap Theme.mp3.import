@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Worldmap Theme.mp3-78c61d83aecb60a79e1ae1e2e923fc94.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Worldmap Theme.mp3"
+dest_files=[ "res://.import/Worldmap Theme.mp3-78c61d83aecb60a79e1ae1e2e923fc94.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -8,8 +8,9 @@ var state = STATES.MOVING
 var shotCount = 3
 var shotsFired = 0
 var canShoot = true
+var range = 300
 
-const SPEED = 90
+const SPEED = 110
 const PROJECTILE = preload("res://gameObjects/enemies/enemyProjectiles/enemyProjectile.tscn")
 
 #assign Navigation Agent node as navAgent
@@ -19,35 +20,41 @@ func _ready():
 	#add self to enemies group
 	self.add_to_group("enemies")
 
+
 func _physics_process(delta):
 	#if not dead and if a target is assigned
 	if active:
 		if player:
 			match state:
 				STATES.MOVING:
+					if !$SFX/idleSound.is_playing():
+						$SFX/idleSound.play()
 					#grab direction to next pathfinding target and move towards it
 					var navDir = to_local(navAgent.get_next_path_position()).normalized()
 					velocity = navDir * SPEED
 					
 					#grab player position and rotate the raycast towards it
 					var shotDir = (global_position - player.global_position).normalized()
-					$RayCast2D.target_position = shotDir * -100
+					$RayCast2D.target_position = shotDir * -range
 					
-					#Shoot projectile, if able
 					if $RayCast2D.is_colliding() and canShoot:
-						fireProjectile(shotDir)
+						var collider = $RayCast2D.get_collider()
+						if collider and collider.is_in_group("player"):
+							fireProjectile(shotDir)
 				STATES.SHOOTING:
+					$SFX/idleSound.stop()
 					#lock position in place
 					velocity = Vector2.ZERO
 					
 					#grab player position and rotate the raycast towards it
 					var shotDir = (global_position - player.global_position).normalized()
-					$RayCast2D.target_position = shotDir * -100
+					$RayCast2D.target_position = shotDir * -range
 					if canShoot:
 						fireProjectile(shotDir)
 		move_and_slide()
 
 func fireProjectile(shotDir):
+	$SFX/shootSound.play()
 	#set state machine to shooting
 	state = STATES.SHOOTING
 	#add shots to shot count

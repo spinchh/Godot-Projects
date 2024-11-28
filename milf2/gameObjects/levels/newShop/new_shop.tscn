@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://clbo7kk67t2rg"]
+[gd_scene load_steps=7 format=3 uid="uid://clbo7kk67t2rg"]
 
 [ext_resource type="Script" path="res://gameObjects/levels/newShop/midContainers.gd" id="1_q4wv5"]
 [ext_resource type="Script" path="res://gameObjects/levels/newShop/shopItemContainer.gd" id="2_6r1o8"]
+[ext_resource type="Texture2D" uid="uid://cfqwv5w404k64" path="res://art/newUI/rodsArt/sampleRod.png" id="3_0cvie"]
+[ext_resource type="Script" path="res://gameObjects/levels/newShop/detailsContainer.gd" id="3_1dami"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4st8n"]
+bg_color = Color(0.192157, 0.101961, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgdow"]
+bg_color = Color(0.521569, 0.290196, 0, 1)
 
 [node name="newShop" type="Control"]
 layout_mode = 3
@@ -187,12 +195,12 @@ text = "Other
 [node name="ScrollContainer" type="ScrollContainer" parent="shopUI"]
 anchors_preset = -1
 anchor_left = 0.032
-anchor_top = 0.198
-anchor_right = 0.651
+anchor_top = 0.208
+anchor_right = 0.753
 anchor_bottom = 0.972
 offset_left = -1.864
-offset_top = 6.696
-offset_right = 0.0479736
+offset_top = 0.216003
+offset_right = -117.456
 offset_bottom = 0.143982
 
 [node name="shopItemContainer" type="GridContainer" parent="shopUI/ScrollContainer"]
@@ -201,6 +209,94 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 script = ExtResource("2_6r1o8")
+
+[node name="detailsPanel" type="PanelContainer" parent="shopUI"]
+anchors_preset = -1
+anchor_left = 0.631
+anchor_top = 0.153
+anchor_right = 0.977
+anchor_bottom = 0.985
+offset_left = 0.0879517
+offset_top = -0.144005
+offset_right = 0.49585
+offset_bottom = -0.280029
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="shopUI/detailsPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4st8n")
+
+[node name="detailsContainer" type="VBoxContainer" parent="shopUI/detailsPanel" groups=["detailsContainer"]]
+layout_mode = 2
+script = ExtResource("3_1dami")
+
+[node name="imageContainer" type="MarginContainer" parent="shopUI/detailsPanel/detailsContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="shopUI/detailsPanel/detailsContainer/imageContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="shopUI/detailsPanel/detailsContainer/imageContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qgdow")
+
+[node name="MarginContainer" type="MarginContainer" parent="shopUI/detailsPanel/detailsContainer/imageContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="shopUI/detailsPanel/detailsContainer/imageContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_0cvie")
+
+[node name="descContainer" type="MarginContainer" parent="shopUI/detailsPanel/detailsContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="shopUI/detailsPanel/detailsContainer/descContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="shopUI/detailsPanel/detailsContainer/descContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="shopUI/detailsPanel/detailsContainer/descContainer/PanelContainer"]
+layout_mode = 2
+text = "Sample Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="shopUI/detailsPanel/detailsContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="shopUI/detailsPanel/detailsContainer/MarginContainer"]
+layout_mode = 2
+text = "Purchase
+"
 
 [connection signal="pressed" from="shopUI/topContainer/gear" to="shopUI/midContainers" method="_on_gear_pressed"]
 [connection signal="pressed" from="shopUI/topContainer/apparel" to="shopUI/midContainers" method="_on_apparel_pressed"]

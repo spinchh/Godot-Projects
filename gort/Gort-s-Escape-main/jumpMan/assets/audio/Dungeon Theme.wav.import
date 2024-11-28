@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Dungeon Theme.wav-c0c6a35dba0e55d09591016181c896ae.sample"
+
+[deps]
+
+source_file="res://assets/audio/Dungeon Theme.wav"
+dest_files=[ "res://.import/Dungeon Theme.wav-c0c6a35dba0e55d09591016181c896ae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

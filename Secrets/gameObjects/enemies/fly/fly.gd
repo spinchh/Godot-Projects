@@ -12,6 +12,8 @@ func _ready():
 func _physics_process(delta):
 	if active:
 		if player:
+			if !$SFX/idleSound.is_playing():
+				$SFX/idleSound.play()
 			var dir = to_local(navAgent.get_next_path_position()).normalized()
 			velocity = dir * SPEED
 		move_and_slide()

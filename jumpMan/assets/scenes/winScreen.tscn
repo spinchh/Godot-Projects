@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="FontFile" id=1]
+[ext_resource path="res://assets/fonts/BalsamiqSans-Bold.ttf" type="FontFile" id=2]
+[ext_resource path="res://assets/scenes/winScreen.gd" type="Script" id=3]
+
+[sub_resource type="FontFile" id=1]
+size = 200
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=10]
+size = 80
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.223529, 0.215686, 0.215686, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.843137, 0.831373, 0.831373, 1 )
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="FontFile" id=5]
+size = 60
+font_data = ExtResource( 2 )
+
+[node name="winScreen" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+offset_right = 1920.0
+offset_bottom = 1088.0
+
+[node name="Label" type="Label" parent="Popup"]
+offset_top = 96.0
+offset_right = 1920.0
+offset_bottom = 336.0
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 1 )
+text = "Conglaturation"
+align = 1
+
+[node name="Label2" type="Label" parent="Popup"]
+offset_left = 576.0
+offset_top = 384.0
+offset_right = 1326.0
+offset_bottom = 544.0
+theme_override_fonts/font = SubResource( 10 )
+text = "Gort has Escaped"
+align = 1
+
+[node name="Button" type="Button" parent="Popup"]
+offset_left = 736.0
+offset_top = 768.0
+offset_right = 1184.0
+offset_bottom = 864.0
+theme_override_styles/hover = SubResource( 2 )
+theme_override_styles/pressed = SubResource( 3 )
+theme_override_styles/normal = SubResource( 4 )
+
+[node name="Label" type="Label" parent="Popup/Button"]
+offset_left = 12.0
+offset_top = 15.0
+offset_right = 444.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 5 )
+text = "Back to Menu"
+align = 1
+
+[connection signal="pressed" from="Popup/Button" to="." method="_on_Button_pressed"]
